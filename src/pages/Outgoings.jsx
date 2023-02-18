@@ -40,9 +40,9 @@ export default function Outgoings() {
         setPage(0);
     };
     return (
-        <Container maxWidth="lg" sx={{ mt: 4, mb: 4, height: '100%' }}>
-            <Box sx={{ height: '100%' }}>
-                <Paper>
+        <Container maxWidth="lg" sx={{ pt: 4, pb: 4, height: 'calc(100% - 64px)' }}>
+            <Box sx={{height: '100%'}}>
+                <Paper sx={{height: '100%' }}>
                     {/* <DataTable
                         rows={rows}
                         page={page}

@@ -168,13 +168,15 @@ export default function EnhancedTable() {
 	const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   	return (
-		<Box sx={{ width: '100%' }}>
+		<Box sx={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
 			<EnhancedTableToolbar numSelected={selected.length} />
-			<TableContainer>
+			
+			<TableContainer sx={{ flex: '0 1 calc(100% - 52px)', overflowY: 'auto' }}>
 				<Table
 					sx={{ minWidth: 750 }}
 					aria-labelledby="tableTitle"
 					size={dense ? 'small' : 'medium'}
+					stickyHeader
 				>
 					<EnhancedTableHead
 						numSelected={selected.length}
@@ -243,8 +245,8 @@ export default function EnhancedTable() {
 												{DateFormater.toTableFormat(row.date)}
 											</Typography>
 										</TableCell>
-										<TableCell align="right">{row.protein}</TableCell>
-										<TableCell align="right">{row.protein}</TableCell>
+										<TableCell align="right">{row.count}</TableCell>
+										<TableCell align="right">{row.cost}</TableCell>
 									</TableRow>
 								);
 						})}
@@ -261,7 +263,8 @@ export default function EnhancedTable() {
 				</Table>
 			</TableContainer>
 			<TablePagination
-				rowsPerPageOptions={[5, 10, 25]}
+			 	sx={{ height: '52px', overflowY: 'hidden' }}
+				rowsPerPageOptions={[10, 25, 30, 50]}
 				component="div"
 				count={rows.length}
 				rowsPerPage={rowsPerPage}
