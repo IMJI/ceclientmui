@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,6 +10,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import { Stack } from '@mui/material';
+import CreateModal from '../CreateModal';
 
 EnhancedTableToolbar.propTypes = {
     numSelected: PropTypes.number.isRequired,
@@ -17,6 +18,7 @@ EnhancedTableToolbar.propTypes = {
 
 export default function EnhancedTableToolbar(props) {
     const { numSelected } = props;
+	const [isModalOpened, setIsModalOpened] = useState(false);
   
     return (
       	<Toolbar
@@ -29,6 +31,7 @@ export default function EnhancedTableToolbar(props) {
 				}),
 			}}
 		>
+			{isModalOpened ? <CreateModal /> : ''}
 			{numSelected > 0 ? (
 				<Typography
 					sx={{ flex: '1 1 100%' }}
@@ -69,11 +72,13 @@ export default function EnhancedTableToolbar(props) {
 							<FilterListIcon />
 						</IconButton>
 					</Tooltip>
-					<Tooltip title="Добавить">
-						<IconButton>
-							<AddIcon />
-						</IconButton>
-					</Tooltip>
+					<CreateModal>
+						<Tooltip title="Добавить">
+							<IconButton onClick={() => setIsModalOpened(true)}>
+								<AddIcon />
+							</IconButton>
+						</Tooltip>
+					</CreateModal>
 				</Stack>
 			)}
       	</Toolbar>
