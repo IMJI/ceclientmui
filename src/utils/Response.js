@@ -7,7 +7,7 @@ class Response {
 
     constructor(response) {
         console.log(response);
-        if (response && response.name === 'AuthException') {
+        if (response && response.status) {
             this.error = response;
             this.successful = false;
         } else {
