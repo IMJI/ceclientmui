@@ -55,7 +55,7 @@ const headCells = [
         label: 'Налог',
     },
     {
-        id: 'status',
+        id: 'statuses',
         numeric: false,
         disablePadding: false,
         label: 'Статус',

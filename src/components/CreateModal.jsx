@@ -9,18 +9,19 @@ import Slide from '@mui/material/Slide';
 import useLocalStorage from '../hooks/LocalStorage';
 import Fetch from '../services/Fetch';
 import { useNavigate } from 'react-router-dom';
-import { FormControl, Grid } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import { InputLabel } from '@mui/material';
 import { Select } from '@mui/material';
 import { MenuItem } from '@mui/material';
 import { TextField } from '@mui/material';
 import Spinner from './Spinner';
+import { CircularProgress } from '@mui/material';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function CreateModal({ children }) {
+export default function CreateModal({ children, refresh }) {
 	const [user, setUser] = useLocalStorage('user', null);
     const [open, setOpen] = React.useState(false);
 	const [isLoading, setIsLoading] = React.useState(true);
@@ -42,8 +43,8 @@ export default function CreateModal({ children }) {
                 setProducts(responseProducts.data);
 				setTaxes(responseTaxes.data)
                 setError(null);
-				console.log(responseProducts.data)
-				console.log('Taxes: ' + taxes)
+				// console.log(responseProducts.data)
+				// console.log('Taxes: ' + taxes)
             } else {
                 setError(responseProducts.error.message + ' ' + responseTaxes.error.message);
                 setProducts(null);
@@ -72,8 +73,8 @@ export default function CreateModal({ children }) {
 			tax,
 			quantity
 		});
-		console.log(response);
 		setOpen(false);
+		refresh();
   	};
 
     return (
@@ -87,12 +88,21 @@ export default function CreateModal({ children }) {
 				keepMounted
 				onClose={handleClose}
 				aria-describedby="alert-dialog-slide-description"
+				PaperProps={{ sx: { width: '100%' } }}
 			>
 				<DialogTitle>{"Добавить продажу"}</DialogTitle>
 				{
 					isLoading || error || (!products) || (!taxes)
 					? (
-						<Spinner />
+						<Box sx={{
+                            width: '100%',
+                            height: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}>
+                            <CircularProgress color="inherit" />
+                        </Box>
 					)
 					: (
 						<DialogContent>

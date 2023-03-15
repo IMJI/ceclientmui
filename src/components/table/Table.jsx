@@ -18,39 +18,6 @@ import DateFormater from '../../utils/DateFormater';
 import Outgoing from '../../models/Outgoing';
 import Status from '../../models/Status';
 
-// const rows = [
-// 	{ id: 1, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 2, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 3, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 4, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 5, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 6, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 7, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 8, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 9, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 10, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 11, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 12, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 13, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 14, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 15, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 16, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 17, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 18, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 19, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 20, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 21, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 22, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 23, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 24, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 25, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 26, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 27, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 28, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 29, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 },
-// 	{ id: 30, product: { id: 1, name: 'Черные брюки', category: { id: 1, name: 'Одежда' }, description: '' }, tax: { id: 1, name: 'Акцизный налог', value: 0.07 }, status: { dateFrom: new Date(), status: 'Доставлен' }, date: new Date(), count: 20, cost: 30000 }
-// ]
-
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
 		return -1;
@@ -83,13 +50,11 @@ function stableSort(array, comparator) {
 	return stabilizedThis.map((el) => el[0]);
 }
 
-export default function EnhancedTable({ rows }) {
-	const [order, setOrder] = React.useState('asc');
-	const [orderBy, setOrderBy] = React.useState('product');
+export default function EnhancedTable({
+		rows, order, setOrder, orderBy, setOrderBy, page, setPage, rowsPerPage, setRowsPerPage, totalCount, filter, setFilter, refresh
+	}) {
+		console.log(filter)
 	const [selected, setSelected] = React.useState([]);
-	const [page, setPage] = React.useState(0);
-	const [dense, setDense] = React.useState(false);
-	const [rowsPerPage, setRowsPerPage] = React.useState(25);
 
 	const handleRequestSort = (event, property) => {
 		const isAsc = orderBy === property && order === 'asc';
@@ -135,24 +100,20 @@ export default function EnhancedTable({ rows }) {
 		setPage(0);
 	};
 
-	// const handleChangeDense = (event) => {
-	// 	setDense(event.target.checked);
-	// };
-
 	const isSelected = (id) => selected.indexOf(id) !== -1;
 
-	// Avoid a layout jump when reaching the last page with empty rows.
 	const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+	console.log(`Empty rows: ${emptyRows}`)
 
   	return (
 		<Box sx={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-			<EnhancedTableToolbar numSelected={selected.length} />
+			<EnhancedTableToolbar numSelected={selected.length} filter={filter} setFilter={setFilter} refresh={refresh} />
 			
 			<TableContainer sx={{ flex: '0 1 calc(100% - 52px)', overflowY: 'auto' }}>
 				<Table
 					sx={{ minWidth: 750 }}
 					aria-labelledby="tableTitle"
-					size={dense ? 'small' : 'medium'}
+					size='medium'
 					stickyHeader
 				>
 					<EnhancedTableHead
@@ -164,9 +125,8 @@ export default function EnhancedTable({ rows }) {
 						rowCount={rows.length}
 					/>
 						<TableBody>
-						{stableSort(rows, getComparator(order, orderBy))
-							.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-							.map((row, index) => {
+						{
+							rows.map((row, index) => {
 								const isItemSelected = isSelected(row.id);
 								const labelId = `enhanced-table-checkbox-${index}`;
 
@@ -250,15 +210,15 @@ export default function EnhancedTable({ rows }) {
 									</TableRow>
 								);
 						})}
-						{emptyRows > 0 && (
+						{/* {emptyRows > 0 && (
 							<TableRow
 								style={{
-									height: (dense ? 33 : 53) * emptyRows,
+									height: 53 * emptyRows,
 								}}
 							>
 								<TableCell colSpan={6} />
 							</TableRow>
-						)}
+						)} */}
 					</TableBody>
 				</Table>
 			</TableContainer>
@@ -266,7 +226,7 @@ export default function EnhancedTable({ rows }) {
 			 	sx={{ height: '52px', overflowY: 'hidden' }}
 				rowsPerPageOptions={[10, 25, 30, 50]}
 				component="div"
-				count={rows.length}
+				count={totalCount}
 				rowsPerPage={rowsPerPage}
 				page={page}
 				onPageChange={handleChangePage}

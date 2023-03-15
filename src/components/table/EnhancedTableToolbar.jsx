@@ -11,14 +11,15 @@ import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import { Stack } from '@mui/material';
 import CreateModal from '../CreateModal';
+import FilterModal from '../FilterModal';
 
 EnhancedTableToolbar.propTypes = {
     numSelected: PropTypes.number.isRequired,
 };
 
-export default function EnhancedTableToolbar(props) {
-    const { numSelected } = props;
+export default function EnhancedTableToolbar({ numSelected, filter, setFilter, refresh }) {
 	const [isModalOpened, setIsModalOpened] = useState(false);
+	// console.log(filter)
   
     return (
       	<Toolbar
@@ -67,12 +68,14 @@ export default function EnhancedTableToolbar(props) {
 				</Stack>
 			) : (
 				<Stack direction='row'>
-					<Tooltip title="Фильтровать">
-						<IconButton>
-							<FilterListIcon />
-						</IconButton>
-					</Tooltip>
-					<CreateModal>
+					<FilterModal filter={filter} setFilter={setFilter}>
+						<Tooltip title="Фильтровать">
+							<IconButton>
+								<FilterListIcon />
+							</IconButton>
+						</Tooltip>
+					</FilterModal>
+					<CreateModal refresh={refresh}>
 						<Tooltip title="Добавить">
 							<IconButton onClick={() => setIsModalOpened(true)}>
 								<AddIcon />

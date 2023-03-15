@@ -6,7 +6,7 @@ class Response {
     successful;
 
     constructor(response) {
-        console.log(response);
+        // console.log(response);
         if (response && response.status) {
             this.error = response;
             this.successful = false;

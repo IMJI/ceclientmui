@@ -30,7 +30,7 @@ export default function ProfileUser() {
                 }
             }
             setIsLoading(false);
-            console.log(isLoading + ' ' + data + ' ' + error)
+            // console.log(isLoading + ' ' + data + ' ' + error)
         };
         getData();
     }, []);

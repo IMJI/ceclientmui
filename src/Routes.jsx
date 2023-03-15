@@ -3,12 +3,14 @@ import Dashboard from "./pages/Dashboard";
 import Layout from "./pages/Layout";
 import Login from "./pages/Login";
 import Outgoings from "./pages/Outgoings";
+import AlertPopup from "./components/AlertPopup";
 
 const AppRoutes = [
     {
         index: true,
         element: (
             <Layout name='Панель'>
+                <AlertPopup />
                 <Dashboard />
             </Layout>
         )
@@ -21,6 +23,7 @@ const AppRoutes = [
         path: '/outgoings',
         element: (
             <Layout name='Продажи'>
+                <AlertPopup />
                 <Outgoings />
             </Layout>
         )

@@ -4,6 +4,11 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
+import Profit from '../components/Profit';
+import ProfitBarChart from '../components/ProfitBarChart';
+import { Button } from '@mui/material';
+import useAlert from '../hooks/useAlert';
+
 // import { mainListItems, secondaryListItems } from './listItems';
 // import Chart from './Chart';
 // import Deposits from './Deposits';
@@ -23,6 +28,7 @@ function Copyright(props) {
   }
 
 function DashboardContent() {
+    const { setAlert } = useAlert();
     return (   
         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
@@ -36,7 +42,7 @@ function DashboardContent() {
                             height: 240,
                         }}
                     >
-                        {/* <Chart /> */}
+                        <ProfitBarChart />
                     </Paper>
                 </Grid>
                 {/* Recent Deposits */}
@@ -49,7 +55,7 @@ function DashboardContent() {
                             height: 240,
                         }}
                     >
-                        {/* <Deposits /> */}
+                        <Profit />
                     </Paper>
                 </Grid>
                 {/* Recent Orders */}
