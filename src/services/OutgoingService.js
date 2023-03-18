@@ -5,11 +5,20 @@ import Service from "./Service";
 import qs from 'qs';
 
 function queryParamsSerializer(params) {
-    console.log(qs.stringify(params, {arrayFormat: 'repeat'}))
     return qs.stringify(params, {arrayFormat: 'repeat'});
 }
 
 export default class OutgoingService extends Service {
+    static async get(id) {
+        const token = TokenService.get();
+        const response = await axios.get(`${this.apiUrl}/outgoings/${id}`, {
+            headers: {
+                'Authorization': `Basic ${token}` 
+            }
+        });
+        return response.data;
+    }
+
     static async getAll(limit = 25, page = 1, order = 'asc', orderBy='date', filter={}) {
         const token = TokenService.get();
         const response = await axios.get(`${this.apiUrl}/outgoings`, {
