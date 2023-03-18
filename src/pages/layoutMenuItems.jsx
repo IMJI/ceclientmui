@@ -8,6 +8,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SettingsIcon from '@mui/icons-material/Settings';
+import InventoryIcon from '@mui/icons-material/Inventory';
 import { Link, useNavigate } from 'react-router-dom';
 
 export const mainListItems = (
@@ -23,6 +24,12 @@ export const mainListItems = (
                 <ShoppingCartIcon />
             </ListItemIcon>
             <ListItemText primary="Продажи" />
+        </ListItemButton>
+        <ListItemButton component={Link} to="/stock">
+            <ListItemIcon>
+                <InventoryIcon />
+            </ListItemIcon>
+            <ListItemText primary="Склад" />
         </ListItemButton>
         <ListItemButton component={Link} to="/subordinates">
             <ListItemIcon>

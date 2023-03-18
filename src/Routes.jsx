@@ -3,6 +3,7 @@ import Dashboard from "./pages/Dashboard";
 import Layout from "./pages/Layout";
 import Login from "./pages/Login";
 import Outgoings from "./pages/Outgoings";
+import Stock from "./pages/Stock";
 import AlertPopup from "./components/AlertPopup";
 
 const AppRoutes = [
@@ -57,6 +58,14 @@ const AppRoutes = [
         element: (
             <Layout name='Настройки'>
                 
+            </Layout>
+        )
+    },
+    {
+        path: '/stock',
+        element: (
+            <Layout name='Склад'>
+                <Stock />
             </Layout>
         )
     }
