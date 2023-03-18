@@ -17,6 +17,7 @@ import { toPercentString } from '../../utils/formater';
 import DateFormater from '../../utils/DateFormater';
 import Outgoing from '../../models/Outgoing';
 import Status from '../../models/Status';
+import OutgoingModal from '../OutgoingModal';
 
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
@@ -55,6 +56,8 @@ export default function EnhancedTable({
 	}) {
 		console.log(filter)
 	const [selected, setSelected] = React.useState([]);
+	const [openOutgoingModal, setOpenOutgoingModal] = React.useState(false);
+	const [outgoingId, setOutgoingId] = React.useState(null);
 
 	const handleRequestSort = (event, property) => {
 		const isAsc = orderBy === property && order === 'asc';
@@ -103,7 +106,6 @@ export default function EnhancedTable({
 	const isSelected = (id) => selected.indexOf(id) !== -1;
 
 	const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
-	console.log(`Empty rows: ${emptyRows}`)
 
   	return (
 		<Box sx={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -133,7 +135,10 @@ export default function EnhancedTable({
 								return (
 									<TableRow
 										hover
-										onClick={(event) => handleClick(event, row.id)}
+										onClick={() => {
+											setOutgoingId(row.id);
+											setOpenOutgoingModal(true);
+										}}
 										role="checkbox"
 										aria-checked={isItemSelected}
 										tabIndex={-1}
@@ -146,6 +151,10 @@ export default function EnhancedTable({
 												checked={isItemSelected}
 												inputProps={{
 													'aria-labelledby': labelId,
+												}}
+												onClick={(event) => {
+													event.stopPropagation();
+													handleClick(event, row.id);
 												}}
 											/>
 										</TableCell>
@@ -232,6 +241,7 @@ export default function EnhancedTable({
 				onPageChange={handleChangePage}
 				onRowsPerPageChange={handleChangeRowsPerPage}
 			/>
+			<OutgoingModal id={outgoingId} open={openOutgoingModal} setOpen={setOpenOutgoingModal} />
 		</Box>
   	);
 }
